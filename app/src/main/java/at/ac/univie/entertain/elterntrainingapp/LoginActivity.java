@@ -232,11 +232,6 @@ public class LoginActivity extends AppCompatActivity {
                         FirebaseMessaging.getInstance().subscribeToTopic(familyId);
                     }
 
-//                    fcmToken = FirebaseInstanceId.getInstance().getToken();
-//                    if (fcmToken != null) {
-//                        saveFcmToken(fcmToken);
-//                        saveUserFcmToken(token, username, fcmToken);
-//                    }
                     Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     goTo("welcome");
                 } else {

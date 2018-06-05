@@ -117,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Fehler auf dem Server", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     public String getFamilyId() {
