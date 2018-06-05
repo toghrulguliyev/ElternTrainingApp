@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExercisesListFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/pieBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Emotions" />
+
+        <Button
+            android:id="@+id/selfportrait_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SelfPortrait" />
+
+        <Button
+            android:id="@+id/goals_ex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ziele" />
+
+        <Button
+            android:id="@+id/gedanke_Btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gedanke" />
+
+        <Button
+            android:id="@+id/loben_Btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Loben" />
+
+        <Button
+            android:id="@+id/consequenceBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Konsequenzen" />
+
+        <Button
+            android:id="@+id/ansatzBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ansatz" />
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EmotionsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipeRefreshEmotions"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Übung zum Anteilen von Gefühlen"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="SOLL Zustand:"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/piechartSoll"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+            </com.github.mikephil.charting.charts.PieChart>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="IST Zustand:"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/piechartIst"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+            </com.github.mikephil.charting.charts.PieChart>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
+            <Button
+                android:id="@+id/piechart_update_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/aktualisieren" />
+
+            <Button
+                android:id="@+id/piechart_add_edit_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_edit_emotions" />
+
+            <Button
+                android:id="@+id/piechart_backBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/back_de" />
+
+            <Button
+                android:id="@+id/piechart_compare_dialog_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gefühle vergleichen" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</FrameLayout>

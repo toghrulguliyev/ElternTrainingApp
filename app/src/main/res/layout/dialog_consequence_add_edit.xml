@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="5dp">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <TextView
+        android:id="@+id/textView53"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Situation: Wie waren die äußeren Bedingungen?"
+        android:textStyle="bold"
+        android:layout_marginLeft="7dp"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+    <EditText
+        android:id="@+id/consequence_dialog_situation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+    <TextView
+        android:id="@+id/textView54"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reaktion: Wie hat sich mein Kind verhalten?"
+        android:textStyle="bold"
+        android:layout_marginLeft="7dp"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+    <EditText
+        android:id="@+id/consequence_dialog_reaktion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+    <TextView
+        android:id="@+id/textView55"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Konsequenz: Welche Konsequenz habe ich folgen lassen?"
+        android:textStyle="bold"
+        android:layout_marginLeft="7dp"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+    <EditText
+        android:id="@+id/consequence_dialog_konsequenz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+</LinearLayout>

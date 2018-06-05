@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/exercises"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Übungen" />
+        <item
+            android:id="@+id/messages"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="ForTests(Rule)" />
+        <item
+            android:id="@+id/quizduell"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Quiz Duell" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Konto Einstellungen" />
+        <item
+            android:id="@+id/calendar"
+            android:icon="@android:drawable/ic_menu_my_calendar"
+            android:title="Kalendar" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FamilyRuleFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="187dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:text="@string/familien_regeln"
+                android:textAlignment="center"
+                android:textAppearance="@android:style/TextAppearance.Material.Large"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="465dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="0dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="81dp"
+                android:orientation="vertical">
+
+                <ListView
+                    android:id="@+id/family_rule_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </ListView>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/addRuleBtn"
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="32dp"
+                android:layout_marginStart="40dp"
+                android:text="@string/neue_regel" />
+
+            <Button
+                android:id="@+id/updRuleBtn"
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@+id/addRuleBtn"
+                android:layout_marginEnd="41dp"
+                android:text="@string/aktualisieren" />
+
+        </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>

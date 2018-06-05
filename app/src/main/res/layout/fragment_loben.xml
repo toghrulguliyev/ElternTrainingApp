@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LobenFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="7dp">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Übung zum Loben des eigenen Kindes"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/textView45"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="So unterschiedlich wie Kinder sind, so reagieren sie auch auf verschiedene Arten des Lobes. Versuchen Sie in der kommenden Woche. Ihr Kind auf unterschiedliche Arten zu loben und beobachten Sie, wie Ihr Kind darauf reagiert. Welche Form des Lobes kann es eher annehmen. Welche weniger? Worüber freut es sich am meisten?" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="336dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/black"
+                    android:weightSum="13">
+
+                    <TextView
+                        android:id="@+id/textView46"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:gravity="center"
+                        android:text="#" />
+
+                    <TextView
+                        android:id="@+id/textView47"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:layout_weight="4"
+                        android:background="@android:color/white"
+                        android:text="In welcher Situation habe ich mein Kind gelobt?" />
+
+                    <TextView
+                        android:id="@+id/textView48"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="1dp"
+                        android:layout_weight="4"
+                        android:background="@android:color/white"
+                        android:text="Auf welcher Art habe ich mein Kind gelobt?" />
+
+                    <TextView
+                        android:id="@+id/textView49"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="1dp"
+                        android:layout_weight="4"
+                        android:background="@android:color/white"
+                        android:text="Wie hat mein Kind reagiert?" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ListView
+                        android:id="@+id/loben_list"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                </TableRow>
+
+            </TableLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <Button
+                android:id="@+id/loben_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/aktualisieren" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/loben_add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_mitglied" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/loben_savePdf_Btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/savePdf" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/loben_back_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/go_back" />
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

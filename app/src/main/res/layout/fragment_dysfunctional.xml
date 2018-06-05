@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DysfunctionalFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="7dp">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Übung zum Einfluss dysfunktionaler Gedanken auf die Erziehung"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bitte beschreiben Sie mit Stichworten eine Situation, die Sie mit Ihrem Kind in der letzten Wochen erlebt haben und nach der Sie ein negatives Gefühl hatten. Welcher Gedanke hat dieses Gefühl ausgelöst? Welchen Gedanken Hätten Sie stattdessen denken können und welches positivere Gefühle hätte daraus resultiert?" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="338dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/black"
+                    android:weightSum="6">
+
+                    <TextView
+                        android:id="@+id/dysfun_situation_item2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:text="Situation"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/dysfun_interpretation_item2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:text="Bewertung"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/dysfun_feel_item2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:text="Gefühl"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/dysfun_alterternative_item2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"
+                        android:text="Alternative Bewertung"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/dysfun_alt_feel_item2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:layout_weight="2"
+                        android:background="@android:color/white"
+                        android:text="Gefühl, das aus der alternativen Bewertung resultiert hätte"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1">
+
+                    <ListView
+                        android:id="@+id/dys_gedanken_lv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </TableRow>
+
+            </TableLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/dys_upd_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/aktualisieren" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/dys_addBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_mitglied" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/dys_savePdf_Btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/savePdf" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/dys_backBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/back_de" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

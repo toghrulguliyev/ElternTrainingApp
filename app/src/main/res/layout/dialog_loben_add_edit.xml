@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="5dp">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="7dp" />
+
+    <TextView
+        android:id="@+id/textView50"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="In Welcher Situation habe ich mein Kind Gelobt?"
+        android:textStyle="bold" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+    <EditText
+        android:id="@+id/loben_dialog_situation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+    <TextView
+        android:id="@+id/textView51"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Auf welcher Art habe ich mein Kind gelobt?"
+        android:textStyle="bold" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+    <EditText
+        android:id="@+id/loben_dialog_art"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+    <TextView
+        android:id="@+id/textView52"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wie hat mein Kind reagiert?"
+        android:textStyle="bold" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+    <EditText
+        android:id="@+id/dialog_loben_reaktion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+</LinearLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TableRow
+        android:id="@+id/tableRow10"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/member_name_layout_item"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:gravity="left|center"
+            android:paddingBottom="10dp"
+            android:paddingTop="15dp"
+            android:text="titel"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/date_quadrat_icon_view" />
+
+        <TextView
+            android:id="@+id/member_username_layout_item"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="15dp"
+            android:text="res" />
+
+        <TextView
+            android:id="@+id/gender_layout_item"
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="15dp"
+            android:text="summe" />
+    </TableRow>
+
+</android.support.constraint.ConstraintLayout>

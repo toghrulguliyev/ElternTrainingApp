@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelfportraitFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipe_selfportrait"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/selfportrait_title"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/selfportait_text"
+                android:textSize="18sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="380dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/black">
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="1dp"
+
+                        android:background="@android:color/white"
+                        android:gravity="center"
+                        android:text="@string/strengths"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <ListView
+                        android:id="@+id/selfportrait_strength_list"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:nestedScrollingEnabled="true"
+                        android:background="@android:color/white" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/black">
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="1dp"
+
+                        android:background="@android:color/white"
+                        android:gravity="center"
+                        android:text="@string/weaknesses"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <ListView
+                        android:id="@+id/selfportrait_weakness_list"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:nestedScrollingEnabled="true"
+                        android:background="@android:color/white" />
+                </TableRow>
+
+            </TableLayout>
+
+            <Button
+                android:id="@+id/addQualityBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/addQuality" />
+
+            <Button
+                android:id="@+id/selfportrait_saveToPdfBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/savePdf" />
+
+            <Button
+                android:id="@+id/selfportrait_backBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/back_de" />
+        </LinearLayout>
+    </ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</FrameLayout>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConsequenceFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <TextView
+                android:id="@+id/textView56"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Übung zum Einsatz von Konsequenzen"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <TextView
+                android:id="@+id/textView57"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bei dieser Übung sollen Sie in der kommenden Woche zwei Situationen protokollieren, in denen Sie im Zusammenhang mit dem Verhalten Ihres Kindes Konsequenzen eingesetzt haben. Dabei spielt es keine Rolle, ob Ihr Kind sich positiv oder negativ verhalten hat. Bitte schreiben Sie die Situation, in der das Verhalten des Kindes aufgetreten ist, dann die Reaktion Ihres Kindes und schließlich die Konsequenz, die Sie haben folgen lassen." />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="260dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:id="@+id/textView58"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/my_border"
+                        android:text=" Situation: Wie waren die  äußeren Bedingungen?" />
+
+                    <TextView
+                        android:id="@+id/textView59"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/my_border"
+                        android:text=" Reaktion: Wie hat sich mein Kind verhalten?" />
+
+                    <TextView
+                        android:id="@+id/textView60"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/my_border"
+                        android:text=" Konsequenz: Welche Konsequenz habe ich folgen lassen?" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/table_cons"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="1">
+
+                    <ListView
+                        android:id="@+id/consequence_listview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+                </TableRow>
+
+            </TableLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <Button
+                android:id="@+id/cons_updateBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/aktualisieren" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/cons_addBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_mitglied" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/cons_saveToPdf_Btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/savePdf" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/cons_backBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/go_back" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

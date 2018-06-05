@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddMemberFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <SearchView
+        android:id="@+id/search_member"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </SearchView>
+
+    <ListView
+        android:id="@+id/search_listview"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    <Button
+        android:id="@+id/search_addMemberBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_mitglied" />
+
+    <Button
+        android:id="@+id/search_abbrechen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/abbrechen" />
+</LinearLayout>

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "335658231879",
+    "firebase_url": "https://elterntrainingapp.firebaseio.com",
+    "project_id": "elterntrainingapp",
+    "storage_bucket": "elterntrainingapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335658231879:android:91b9849fd5a4c7c6",
+        "android_client_info": {
+          "package_name": "at.ac.univie.entertain.elterntrainingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "335658231879-fo6afojc000132lt65e14ra1t0lrkhn0.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "335658231879-fo6afojc000132lt65e14ra1t0lrkhn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUGrrRNy_izVaZuCOchpv2XoFbo5wFoAU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

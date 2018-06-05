@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GoalsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Übung zu den Zielen in der Erziehung des Kindes"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welche Ziele habe ich mit meinem Kind?" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Schauen Sie sich die unterstehenden Ziele an und ordnen Sie die Ziele den Optionen “realistisch” oder “unrealistisch” zu." />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/unreal_goal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:text="realistisch"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/real_goal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/holo_red_light"
+                    android:gravity="center"
+                    android:text="unrealistisch"
+                    android:textStyle="italic" />
+            </TableRow>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="221dp">
+
+                <TextView
+                    android:id="@+id/goal5"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginStart="60dp"
+                    android:background="@android:color/holo_orange_light"
+                    android:gravity="center"
+                    android:text="Ziel 5"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/goal6"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@android:color/holo_orange_light"
+                    android:gravity="center"
+                    android:text="Ziel 6"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/goal5" />
+
+                <TextView
+                    android:id="@+id/goal3"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@android:color/holo_orange_light"
+                    android:gravity="center"
+                    android:text="Ziel 3"
+                    app:layout_constraintBottom_toTopOf="@+id/goal5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/goal1" />
+
+                <TextView
+                    android:id="@+id/goal4"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@android:color/holo_orange_light"
+                    android:gravity="center"
+                    android:text="Ziel 4"
+                    app:layout_constraintBottom_toTopOf="@+id/goal6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/goal3"
+                    app:layout_constraintTop_toBottomOf="@+id/goal2" />
+
+                <TextView
+                    android:id="@+id/goal1"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@android:color/holo_orange_light"
+                    android:gravity="center"
+                    android:text="Ziel 1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/goal2"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@android:color/holo_orange_light"
+                    android:gravity="center"
+                    android:text="Ziel 2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/goal1"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <Button
+                android:id="@+id/goals_checkBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/kontrollieren" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/goals_oldGoals_checkBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/oldGoals" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/goals_resetBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/reset_de" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/goals_backBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/go_back" />
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
