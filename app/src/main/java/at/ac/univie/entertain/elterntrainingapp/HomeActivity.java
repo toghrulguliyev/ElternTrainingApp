@@ -23,14 +23,12 @@ public class HomeActivity extends AppCompatActivity
 
     private SharedPreferences sharedPreferences;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        username = findViewById(R.id.textView);
-//        username.setText(getUsername());
+        
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Eltern Training App");
 
