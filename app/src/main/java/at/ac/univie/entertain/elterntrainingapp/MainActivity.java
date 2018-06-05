@@ -5,45 +5,43 @@ import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.FirebaseInstanceIdService;
 
 import at.ac.univie.entertain.elterntrainingapp.Config.Const;
 import at.ac.univie.entertain.elterntrainingapp.model.Response;
+import at.ac.univie.entertain.elterntrainingapp.model.User;
 import at.ac.univie.entertain.elterntrainingapp.network.APIInterface;
 import at.ac.univie.entertain.elterntrainingapp.network.RetrofitClient;
-import at.ac.univie.entertain.elterntrainingapp.service.FcmNotificationsService.MyFirebaseInstanceIdService;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.FirebaseMessagingService;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    SharedPreferences sharedPreferences;
+    private SharedPreferences sharedPreferences;
     private String fcmToken;
+    private String familyId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println(getFamilyId());
-        System.out.println("test----");
         if(checkToken() && checkUsername()){
 
             subscribe();
 
+            System.out.println("Home familyId: " + getFamilyId());
+
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
             this.finish();
-        }else {
+        } else {
             setContentView(R.layout.activity_main);
         }
         setContentView(R.layout.activity_main);
@@ -71,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         return res;
     }
 
-    public boolean checkUsername(){
+    public boolean checkUsername() {
         boolean res = false;
         sharedPreferences = getSharedPreferences(Const.SAVE_FILE,MODE_PRIVATE);
         String username = sharedPreferences.getString(Const.USERNAME_KEY    ,"");
@@ -82,14 +80,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void saveFcmToken(String fcmToken){
-        sharedPreferences = getSharedPreferences(Const.FCM_TOKEN, MODE_PRIVATE);
+        sharedPreferences = getApplicationContext().getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(Const.FCM_TOKEN, fcmToken);
         editor.commit();
     }
 
     public String getToken() {
-        sharedPreferences = getSharedPreferences(Const.SAVE_FILE,MODE_PRIVATE);
+        sharedPreferences = this.getSharedPreferences(Const.SAVE_FILE,MODE_PRIVATE);
         return sharedPreferences.getString(Const.TOKEN_KEY,"");
     }
 
@@ -107,14 +105,15 @@ public class MainActivity extends AppCompatActivity {
 
         call.enqueue(new Callback<Response>() {
             @Override
-            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+            public void onResponse(@NonNull Call<Response> call, retrofit2.Response<Response> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(MainActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<Response> call, Throwable t) {
+            public void onFailure(@NonNull Call<Response> call, Throwable t) {
+                System.out.println("Failure - MainActivity - saveUserFcmToken");
                 Toast.makeText(MainActivity.this, "Fehler auf dem Server", Toast.LENGTH_SHORT).show();
             }
         });
@@ -122,8 +121,43 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String getFamilyId() {
-        sharedPreferences = getSharedPreferences(Const.SAVE_FILE,MODE_PRIVATE);
+        sharedPreferences = this.getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
         return sharedPreferences.getString(Const.FAMILY_ID,"");
+    }
+
+    public void getUserFamilyId() {
+
+        Retrofit retrofit = RetrofitClient.getRetrofitClient();
+        APIInterface api = retrofit.create(APIInterface.class);
+
+        Call<User> call = api.getUser(getToken(), getUsername());
+
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(@NonNull Call<User> call, @NonNull retrofit2.Response<User> response) {
+                if (response.isSuccessful()) {
+                    User user = response.body();
+                    if (user != null) {
+                        if (user.getFamilyId() != null && !user.getFamilyId().isEmpty()) {
+                            familyId = user.getFamilyId();
+                            saveFamilyId(familyId);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<User> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void saveFamilyId(String familyId) {
+        sharedPreferences = getApplicationContext().getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(Const.FAMILY_ID, familyId);
+        editor.commit();
     }
 
     public void subscribe() {
@@ -139,10 +173,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (getFamilyId() != null && !getFamilyId().isEmpty()) {
-            System.out.println(getFamilyId());
             FirebaseMessaging.getInstance().subscribeToTopic(getFamilyId());
+        } else if (getFamilyId() == null || getFamilyId().isEmpty()) {
+            getUserFamilyId();
+            if (familyId != null && !familyId.isEmpty()) {
+                System.out.println(getFamilyId());
+                FirebaseMessaging.getInstance().subscribeToTopic(getFamilyId());
+            }
         }
-
     }
 
 }

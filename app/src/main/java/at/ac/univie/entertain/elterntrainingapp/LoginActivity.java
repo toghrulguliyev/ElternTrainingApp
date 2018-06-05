@@ -266,7 +266,7 @@ public class LoginActivity extends AppCompatActivity {
         this.finish();
     }
 
-    public void saveToken(String token){
+    public void saveToken(String token) {
         sharedPreferences = getSharedPreferences(Const.SAVE_FILE,MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(Const.TOKEN_KEY, token);
@@ -274,21 +274,21 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void saveUsername(String username){
-        sharedPreferences = getSharedPreferences(Const.SAVE_FILE,MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(Const.USERNAME_KEY, username);
         editor.commit();
     }
 
-    public void saveFamilyId(String familyId){
-        sharedPreferences = getSharedPreferences(Const.FAMILY_ID, MODE_PRIVATE);
+    public void saveFamilyId(String familyId) {
+        sharedPreferences = getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(Const.FAMILY_ID, familyId);
         editor.commit();
     }
 
-    public void saveFcmToken(String fcmToken){
-        sharedPreferences = getSharedPreferences(Const.FCM_TOKEN, MODE_PRIVATE);
+    public void saveFcmToken(String fcmToken) {
+        sharedPreferences = getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(Const.FCM_TOKEN, fcmToken);
         editor.commit();
@@ -303,14 +303,15 @@ public class LoginActivity extends AppCompatActivity {
 
         call.enqueue(new Callback<Response>() {
             @Override
-            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+            public void onResponse(@NonNull Call<Response> call, retrofit2.Response<Response> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<Response> call, Throwable t) {
+            public void onFailure(@NonNull Call<Response> call, Throwable t) {
+                System.out.println("Failure - LoginActivity - saveUserFcmToken");
                 Toast.makeText(LoginActivity.this, "Fehler auf dem Server", Toast.LENGTH_SHORT).show();
             }
         });

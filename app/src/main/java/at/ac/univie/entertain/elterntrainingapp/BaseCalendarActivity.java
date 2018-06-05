@@ -239,17 +239,17 @@ public abstract class BaseCalendarActivity extends AppCompatActivity implements 
     }
 
     public String getToken() {
-        sharedPreferences = this.getSharedPreferences(Const.SAVE_FILE,MODE_PRIVATE);
+        sharedPreferences = this.getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
         return sharedPreferences.getString(Const.TOKEN_KEY,"");
     }
 
     public String getUsername() {
-        sharedPreferences = this.getSharedPreferences(Const.SAVE_FILE,MODE_PRIVATE);
+        sharedPreferences = this.getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
         return sharedPreferences.getString(Const.USERNAME_KEY,"");
     }
 
     public String getFamilyId() {
-        sharedPreferences = this.getSharedPreferences(Const.SAVE_FILE,MODE_PRIVATE);
+        sharedPreferences = this.getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
         return sharedPreferences.getString(Const.FAMILY_ID,"");
     }
 

@@ -24,7 +24,7 @@ import at.ac.univie.entertain.elterntrainingapp.Config.Const;
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    SharedPreferences sharedPreferences;
+    private SharedPreferences sharedPreferences;
 
 
     @Override
@@ -36,8 +36,6 @@ public class HomeActivity extends AppCompatActivity
 //        username.setText(getUsername());
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Eltern Training App");
-
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -159,6 +157,8 @@ public class HomeActivity extends AppCompatActivity
             editor.remove(Const.FAMILY_ID);
             editor.commit();
         }
+        editor.clear();
+        editor.commit();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
@@ -167,6 +167,11 @@ public class HomeActivity extends AppCompatActivity
     public String getUsername() {
         sharedPreferences = this.getSharedPreferences(Const.SAVE_FILE,MODE_PRIVATE);
         return sharedPreferences.getString(Const.USERNAME_KEY,"");
+    }
+
+    public String getFamilyId() {
+        sharedPreferences = getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
+        return sharedPreferences.getString(Const.FAMILY_ID,"");
     }
 
 }
