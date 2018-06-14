@@ -5,9 +5,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.CountDownTimer;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.itextpdf.text.DocumentException;
@@ -52,7 +55,7 @@ public class ConsequenceFragment extends Fragment {
     private ConsequenceAdapter consAdapter;
     private ListView consListView;
     private EditText situation, konsequenz, reaktion;
-
+    private ProgressBar progressBar;
 
 
     public ConsequenceFragment() {
@@ -86,6 +89,12 @@ public class ConsequenceFragment extends Fragment {
         goBackBtn = (Button) consView.findViewById(R.id.cons_backBtn);
         consListView = (ListView) consView.findViewById(R.id.consequence_listview);
         savePdf = (Button) consView.findViewById(R.id.cons_saveToPdf_Btn);
+        progressBar = (ProgressBar) consView.findViewById(R.id.progressbar_consequence);
+
+        progressBar.setMax(299);
+        progressBar.setProgress(299);
+        MyCountDownTimer countDownTimer = new MyCountDownTimer(5*60000, 1000);
+        countDownTimer.start();
 
         loadConsList();
 
@@ -95,7 +104,7 @@ public class ConsequenceFragment extends Fragment {
 
                 if (isStoragePermissionGranted()) {
                     if (!consList.isEmpty()) {
-                        PdfHandler pdf = new PdfHandler(getToken(), getUsername());
+                        PdfHandler pdf = new PdfHandler(getToken(), getUsername(), getActivity());
                         try {
                             pdf.createCons(consList, "Übung zum Einfluss dysfunktionaler Gedanken auf die Erziehung");
                         } catch (DocumentException e) {
@@ -136,6 +145,28 @@ public class ConsequenceFragment extends Fragment {
         });
 
         return consView;
+    }
+
+    public class MyCountDownTimer extends CountDownTimer {
+
+        public MyCountDownTimer(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            int progress = (int) (5*60000 - millisUntilFinished) / 1000;
+            progressBar.setProgress(progress);
+            System.out.println("progress = " + progress);
+        }
+
+        @Override
+        public void onFinish() {
+            progressBar.setProgress(299);
+            progressBar.setBackgroundColor(Color.GREEN);
+            Toast.makeText(getActivity(), "5 Minunten sind vorbei", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void loadConsList() {

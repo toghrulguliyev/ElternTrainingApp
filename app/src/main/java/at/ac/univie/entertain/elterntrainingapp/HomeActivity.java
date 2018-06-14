@@ -28,7 +28,7 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Eltern Training App");
 
@@ -128,8 +128,14 @@ public class HomeActivity extends AppCompatActivity
             Intent intent;
             intent = new Intent(this, CalendarActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.quizduell) {
+            Intent intent;
+            intent = new Intent(this, QuizDuelActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.all_results) {
+            Intent intent;
+            intent = new Intent(this, PdfResultsActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

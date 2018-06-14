@@ -8,4 +8,6 @@ public class Const {
     public static final String USERNAME_KEY = "username";
     public static final String FAMILY_ID = "familyId";
     public static final String FCM_TOKEN = "fcmToken";
+    public static final String EMAIL_KEY = "email";
+    public static final String FULL_NAME = "fullName";
 }

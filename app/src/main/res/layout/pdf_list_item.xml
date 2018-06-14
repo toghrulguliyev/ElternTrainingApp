@@ -1,32 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pdf_list_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TableRow
         android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_weight="1"
-        android:background="@drawable/my_border"
-
-        android:gravity="center">
+        android:layout_height="30dp"
+        android:weightSum="8">
 
         <TextView
-            android:id="@+id/selfportrait_item_count"
-            android:layout_width="wrap_content"
+            android:id="@+id/pdf_count"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.2"
+            android:layout_weight="1"
             android:background="@drawable/my_border"
             android:gravity="center" />
 
         <TextView
-            android:id="@+id/selfportrait_item"
-            android:layout_width="wrap_content"
+            android:id="@+id/pdf_name"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.8"
+            android:layout_weight="7"
             android:background="@drawable/my_border"
             android:gravity="left|center" />
     </TableRow>
-
 </LinearLayout>

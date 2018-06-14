@@ -112,7 +112,7 @@ public class SelfportraitFragment extends Fragment implements SwipeRefreshLayout
 
                 if (isStoragePermissionGranted()) {
                     if (!sp.getStrengths().isEmpty() && !sp.getWeaknesses().isEmpty()) {
-                        PdfHandler pdf = new PdfHandler(getToken(), getUsername());
+                        PdfHandler pdf = new PdfHandler(getToken(), getUsername(), getActivity());
                         try {
                             pdf.createSf(sp.getStrengths(), sp.getWeaknesses(), "Übung zum Einfluss dysfunktionaler Gedanken auf die Erziehung");
                         } catch (DocumentException e) {

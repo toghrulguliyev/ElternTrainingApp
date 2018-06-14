@@ -6,24 +6,29 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/exercises"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@android:drawable/ic_menu_agenda"
             android:title="Übungen" />
+        <item
+            android:id="@+id/all_results"
+            android:icon="@android:drawable/ic_menu_zoom"
+            android:title="Ergebnisse" />
         <item
             android:id="@+id/messages"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="ForTests(Rule)" />
+            android:title="Familienregeln" />
         <item
             android:id="@+id/quizduell"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@android:drawable/checkbox_on_background"
             android:title="Quiz Duell" />
-        <item
-            android:id="@+id/settings"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Konto Einstellungen" />
         <item
             android:id="@+id/calendar"
             android:icon="@android:drawable/ic_menu_my_calendar"
             android:title="Kalendar" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Konto Einstellungen" />
+
     </group>
 
     <item android:title="Communicate">

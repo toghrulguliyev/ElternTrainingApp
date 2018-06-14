@@ -11,6 +11,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.CountDownTimer;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,6 +23,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +56,7 @@ public class GoalsFragment extends Fragment {
     private SharedPreferences sharedPreferences;
     private List<String> randomGoals, realGoals, unrealGoals;
     private Button checkBtn, resetBtn, goBackBtn, oldGoalsBtn;
+    private ProgressBar progressBar;
 
     private TextView goal1, goal2, goal3, goal4, goal5, goal6, real, unreal;
     private TextView ziel1, ziel2, ziel3, ziel4, ziel5, ziel6, check1, check2, check3, check4, check5, check6;
@@ -86,6 +89,8 @@ public class GoalsFragment extends Fragment {
 
         real = (TextView) goalView.findViewById(R.id.real_goal);
         unreal = (TextView) goalView.findViewById(R.id.unreal_goal);
+
+        progressBar = (ProgressBar) goalView.findViewById(R.id.progressBar_goals);
 
         checkBtn = (Button) goalView.findViewById(R.id.goals_checkBtn);
         resetBtn = (Button) goalView.findViewById(R.id.goals_resetBtn);
@@ -127,6 +132,11 @@ public class GoalsFragment extends Fragment {
             }
         });
 
+        progressBar.setMax(299);
+        progressBar.setProgress(299);
+        MyCountDownTimer countDownTimer = new MyCountDownTimer(5*60000, 1000);
+        countDownTimer.start();
+
         goBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,7 +147,27 @@ public class GoalsFragment extends Fragment {
         return goalView;
     }
 
+    public class MyCountDownTimer extends CountDownTimer {
 
+        public MyCountDownTimer(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            int progress = (int) (5*60000 - millisUntilFinished) / 1000;
+            progressBar.setProgress(progress);
+            System.out.println("progress = " + progress);
+        }
+
+        @Override
+        public void onFinish() {
+            progressBar.setProgress(299);
+            progressBar.setBackgroundColor(Color.GREEN);
+            Toast.makeText(getActivity(), "5 Minunten sind vorbei", Toast.LENGTH_SHORT).show();
+        }
+
+    }
 
     private final class GoalTouchListener implements OnTouchListener{
         @SuppressLint("NewApi")

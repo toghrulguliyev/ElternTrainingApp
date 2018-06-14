@@ -83,4 +83,6 @@
     <string name="realistisch">Realistisch:</string>
     <string name="unrealistisch">Unrealistisch:</string>
     <string name="oldGoals">Alte Eingabe kontrollieren</string>
+    <string name="title_activity_quiz_duel">QuizDuelActivity</string>
+    <string name="weiter">Weiter</string>
 </resources>

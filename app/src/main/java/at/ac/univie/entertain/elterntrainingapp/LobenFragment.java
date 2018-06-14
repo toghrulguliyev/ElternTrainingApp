@@ -5,9 +5,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.CountDownTimer;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.itextpdf.text.DocumentException;
@@ -51,6 +54,7 @@ public class LobenFragment extends Fragment {
     private LobenAdapter lobenAdapter;
     private ListView lobenListView;
     private EditText situation, art, reaktion;
+    private ProgressBar progressBar;
 
     public LobenFragment() {
         // Required empty public constructor
@@ -75,6 +79,7 @@ public class LobenFragment extends Fragment {
         goBackBtn = (Button) lobenView.findViewById(R.id.loben_back_btn);
         lobenListView = (ListView) lobenView.findViewById(R.id.loben_list);
         savePdf = (Button) lobenView.findViewById(R.id.loben_savePdf_Btn);
+        progressBar = (ProgressBar) lobenView.findViewById(R.id.progressBar_loben);
 
         loadLobenList();
 
@@ -98,7 +103,7 @@ public class LobenFragment extends Fragment {
 
                 if (isStoragePermissionGranted()) {
                     if (!lobenList.isEmpty()) {
-                        PdfHandler pdf = new PdfHandler(getToken(), getUsername());
+                        PdfHandler pdf = new PdfHandler(getToken(), getUsername(), getActivity());
                         try {
                             pdf.createLoben(lobenList, "Übung zum Loben des eigenen Kindes");
                         } catch (DocumentException e) {
@@ -117,6 +122,11 @@ public class LobenFragment extends Fragment {
             }
         });
 
+        progressBar.setMax(299);
+        progressBar.setProgress(299);
+        MyCountDownTimer countDownTimer = new MyCountDownTimer(5*60000, 1000);
+        countDownTimer.start();
+
         goBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,6 +135,28 @@ public class LobenFragment extends Fragment {
         });
 
         return lobenView;
+    }
+
+    public class MyCountDownTimer extends CountDownTimer {
+
+        public MyCountDownTimer(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            int progress = (int) (5*60000 - millisUntilFinished) / 1000;
+            progressBar.setProgress(progress);
+            System.out.println("progress = " + progress);
+        }
+
+        @Override
+        public void onFinish() {
+            progressBar.setProgress(299);
+            progressBar.setBackgroundColor(Color.GREEN);
+            Toast.makeText(getActivity(), "5 Minunten sind vorbei", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void loadLobenList() {

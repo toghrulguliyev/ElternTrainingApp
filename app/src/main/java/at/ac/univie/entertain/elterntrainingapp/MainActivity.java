@@ -137,6 +137,12 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     User user = response.body();
                     if (user != null) {
+                        if (getEmail() == null || getEmail().isEmpty()) {
+                            saveEmail(user.getEmail());
+                        }
+                        if (getFullName() == null || getFullName().isEmpty()) {
+                            saveFullName(user.getFirstName() + " " + user.getLastName());
+                        }
                         if (user.getFamilyId() != null && !user.getFamilyId().isEmpty()) {
                             familyId = user.getFamilyId();
                             saveFamilyId(familyId);
@@ -180,6 +186,30 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseMessaging.getInstance().subscribeToTopic(getFamilyId());
             }
         }
+    }
+
+    public void saveEmail(String email) {
+        sharedPreferences = getApplicationContext().getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(Const.EMAIL_KEY, email);
+        editor.commit();
+    }
+
+    public void saveFullName(String fullName) {
+        sharedPreferences = getApplicationContext().getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(Const.FULL_NAME, fullName);
+        editor.commit();
+    }
+
+    public String getEmail() {
+        sharedPreferences = this.getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
+        return sharedPreferences.getString(Const.EMAIL_KEY,"");
+    }
+
+    public String getFullName() {
+        sharedPreferences = this.getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
+        return sharedPreferences.getString(Const.FULL_NAME,"");
     }
 
 }

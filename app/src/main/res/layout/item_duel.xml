@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="8">
+
+        <TextView
+            android:id="@+id/qd_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Text"
+            android:background="@drawable/my_border"/>
+
+        <TextView
+            android:id="@+id/qd_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_weight="3"
+            android:background="@drawable/my_border"/>
+
+        <TextView
+            android:id="@+id/qd_autor_score"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_weight="2"
+            android:background="@drawable/my_border"/>
+
+        <TextView
+            android:id="@+id/qd_gegner_score"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_weight="2"
+            android:background="@drawable/my_border"/>
+    </TableRow>
+</LinearLayout>

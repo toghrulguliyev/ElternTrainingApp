@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import at.ac.univie.entertain.elterntrainingapp.Config.Const;
@@ -123,6 +124,7 @@ public class FamilyRuleFragment extends Fragment {
             @Override
             public void onResponse(Call<List<FamilyRule>> call, retrofit2.Response<List<FamilyRule>> response) {
                 if (response.isSuccessful()) {
+                    frList = new ArrayList<FamilyRule>();
                     frList = response.body();
                     if(frList == null || frList.isEmpty()) {
                         Toast.makeText(getActivity(), "Keine Regel vorhanden", Toast.LENGTH_SHORT).show();

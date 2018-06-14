@@ -15,6 +15,9 @@ import at.ac.univie.entertain.elterntrainingapp.model.MyGoals;
 import at.ac.univie.entertain.elterntrainingapp.model.Response;
 import at.ac.univie.entertain.elterntrainingapp.model.Selfportrait;
 import at.ac.univie.entertain.elterntrainingapp.model.User;
+import at.ac.univie.entertain.elterntrainingapp.model.quizDuel.Duel;
+import at.ac.univie.entertain.elterntrainingapp.model.quizDuel.Results;
+import at.ac.univie.entertain.elterntrainingapp.model.quizDuel.Score;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.http.Body;
@@ -153,6 +156,21 @@ public interface APIInterface {
     @POST("save_fcm_token")
     Call<Response> saveFcmToken(@Header(Const.TOKEN_KEY) String token, @Field("username") String username, @Field("fcmToken") String fcmToken);
 
+    @FormUrlEncoded
+    @POST("get_duels")
+    Call<List<Duel>> getDuels(@Header(Const.TOKEN_KEY) String token, @Field("username") String username);
+
+    @FormUrlEncoded
+    @POST("create_duel")
+    Call<Response> createDuel(@Header(Const.TOKEN_KEY) String token, @Field("username") String username, @Field("category") String category, @Field("opponent") String opponent);
+
+    @FormUrlEncoded
+    @POST("save_score")
+    Call<Response> saveScore(@Header(Const.TOKEN_KEY) String token, @Field("username") String username, @Field("type") String type, @Field("id") String id, @Field("score") int score);
+
+    @FormUrlEncoded
+    @POST("get_results")
+    Call<Results> getScores(@Header(Const.TOKEN_KEY) String token, @Field("username") String username);
 
 
 

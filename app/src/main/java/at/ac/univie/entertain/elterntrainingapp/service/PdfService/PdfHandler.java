@@ -1,6 +1,7 @@
 package at.ac.univie.entertain.elterntrainingapp.service.PdfService;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Environment;
 import android.util.Log;
@@ -38,20 +39,27 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+import static android.content.Context.MODE_PRIVATE;
 import static android.support.constraint.Constraints.TAG;
 
-public class PdfHandler extends Activity{
+public class PdfHandler {
 
     private File pdfFile, pdfFileGedanke, pdfFileCons, pdfFileLoben;
     private SharedPreferences sharedPreferences;
     private User user;
-    private String name, email;
+    private String name = null;
+    private String email = null;
     private String token, username;
+    private Context context;
 
-    public PdfHandler(String token, String username) {
+    public PdfHandler(String token, String username, Context context) {
         this.token = token;
         this.username = username;
-        getUserData();
+        this.context = context;
+        if ((getEmail() == null || getEmail().isEmpty()) && (getFullName() == null || getFullName().isEmpty())) {
+            getUserData();
+        }
+        System.out.println("Constructor getEmail: " + getEmail());
     }
 
     public void createGedanke(List<Gedanke> gedanken, String title) throws DocumentException, IOException {
@@ -89,6 +97,8 @@ public class PdfHandler extends Activity{
         pdfFileGedanke.createNewFile();
         OutputStream output = new FileOutputStream(pdfFileGedanke);
         Document document = new Document(PageSize.A4, 20, 20, 50, 25);
+        System.out.println("name: " + name);
+        System.out.println("email: " + email);
         HeaderFooter event = new HeaderFooter(name, email, "", "");
         PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(pdfFileGedanke));
         writer.setPageEvent(event);
@@ -149,6 +159,8 @@ public class PdfHandler extends Activity{
         pdfFile.createNewFile();
         OutputStream output = new FileOutputStream(pdfFile);
         Document document = new Document(PageSize.A4, 20, 20, 50, 25);
+        System.out.println("name: " + name);
+        System.out.println("email: " + email);
         HeaderFooter event = new HeaderFooter(name, email, "", "");
         PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(pdfFile));
         writer.setPageEvent(event);
@@ -191,13 +203,15 @@ public class PdfHandler extends Activity{
         if (!docsFolder.exists()) {
             docsFolder.mkdir();
         }
-        pdfFileCons = new File(docsFolder.getAbsolutePath(),"Konsequenzen_" + createDate() + ".pdf");
+        pdfFileCons = new File(docsFolder.getAbsolutePath(),"Konsequenzen " + createDate() + ".pdf");
         if (pdfFileCons.exists()) {
             pdfFileCons.delete();
         }
         pdfFileCons.createNewFile();
         OutputStream output = new FileOutputStream(pdfFileCons);
         Document document = new Document(PageSize.A4, 20, 20, 50, 25);
+        System.out.println("name: " + this.name);
+        System.out.println("email: " + this.email);
         HeaderFooter event = new HeaderFooter(name, email, "", "");
         PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(pdfFileCons));
         writer.setPageEvent(event);
@@ -248,6 +262,8 @@ public class PdfHandler extends Activity{
         pdfFileLoben.createNewFile();
         OutputStream output = new FileOutputStream(pdfFileLoben);
         Document document = new Document(PageSize.A4, 20, 20, 50, 25);
+        System.out.println("name: " + name);
+        System.out.println("email: " + email);
         HeaderFooter event = new HeaderFooter(name, email, "", "");
         PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(pdfFileLoben));
         writer.setPageEvent(event);
@@ -268,12 +284,12 @@ public class PdfHandler extends Activity{
     }
 
     public String getUsername() {
-        sharedPreferences = this.getSharedPreferences(Const.SAVE_FILE,MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
         return sharedPreferences.getString(Const.USERNAME_KEY,"");
     }
 
     public String getToken() {
-        sharedPreferences = this.getSharedPreferences(Const.SAVE_FILE,MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
         return sharedPreferences.getString(Const.TOKEN_KEY,"");
     }
 
@@ -292,16 +308,16 @@ public class PdfHandler extends Activity{
                     if (user != null) {
                         name = (user.getFirstName() + " " + user.getLastName());
                         email = user.getEmail();
-                        System.out.println("----- " + email);
+//                        saveFullName((user.getFirstName() + " " + user.getLastName()));
+//                        saveEmail(user.getEmail());
                     }
                 } else {
-                    Toast.makeText(PdfHandler.this, response.message(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(PdfHandler.this, "Fehler auf dem Server", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Fehler auf dem Server", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -314,6 +330,36 @@ public class PdfHandler extends Activity{
         String nowDate = firstSdf.format(date);
 
         return nowDate;
+    }
+
+    public void setNameAndEmail(String name, String email) {
+        this.name = name;
+        this.email = email;
+        System.out.println("Method - name: " + this.name);
+    }
+
+    public void saveEmail(String email) {
+        sharedPreferences = context.getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(Const.EMAIL_KEY, email);
+        editor.commit();
+    }
+
+    public void saveFullName(String fullName) {
+        sharedPreferences = context.getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(Const.FULL_NAME, fullName);
+        editor.commit();
+    }
+
+    public String getEmail() {
+        sharedPreferences = context.getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
+        return sharedPreferences.getString(Const.EMAIL_KEY,"");
+    }
+
+    public String getFullName() {
+        sharedPreferences = context.getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
+        return sharedPreferences.getString(Const.FULL_NAME,"");
     }
 
 }

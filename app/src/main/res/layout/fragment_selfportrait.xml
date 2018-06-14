@@ -6,6 +6,12 @@
     tools:context=".SelfportraitFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <ProgressBar
+        android:id="@+id/progressBar_selfportrait"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipe_selfportrait"
         android:layout_width="wrap_content"
@@ -61,15 +67,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@android:color/black">
+                    android:background="@drawable/my_border">
 
                     <TextView
                         android:id="@+id/textView6"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_margin="1dp"
-
-                        android:background="@android:color/white"
+                        android:background="@drawable/my_border"
                         android:gravity="center"
                         android:text="@string/strengths"
                         android:textSize="12sp"
@@ -79,24 +83,21 @@
                         android:id="@+id/selfportrait_strength_list"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="1dp"
                         android:nestedScrollingEnabled="true"
-                        android:background="@android:color/white" />
+                        android:background="@drawable/my_border" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@android:color/black">
+                    android:background="@drawable/my_border">
 
                     <TextView
                         android:id="@+id/textView8"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_margin="1dp"
-
-                        android:background="@android:color/white"
+                        android:background="@drawable/my_border"
                         android:gravity="center"
                         android:text="@string/weaknesses"
                         android:textSize="12sp"
@@ -106,9 +107,8 @@
                         android:id="@+id/selfportrait_weakness_list"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="1dp"
                         android:nestedScrollingEnabled="true"
-                        android:background="@android:color/white" />
+                        android:background="@drawable/my_border" />
                 </TableRow>
 
             </TableLayout>

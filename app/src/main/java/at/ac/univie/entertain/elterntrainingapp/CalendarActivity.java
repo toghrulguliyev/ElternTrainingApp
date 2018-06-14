@@ -532,8 +532,6 @@ public class CalendarActivity extends BaseCalendarActivity implements Callback<L
 
     }
 
-
-
     @Override
     public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
 

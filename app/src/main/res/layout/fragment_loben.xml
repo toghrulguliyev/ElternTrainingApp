@@ -7,6 +7,12 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+    <ProgressBar
+        android:id="@+id/progressBar_loben"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -50,16 +56,15 @@
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/black"
+                    android:background="@drawable/my_border"
                     android:weightSum="13">
 
                     <TextView
                         android:id="@+id/textView46"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_margin="1dp"
                         android:layout_weight="1"
-                        android:background="@android:color/white"
+                        android:background="@drawable/my_border"
                         android:gravity="center"
                         android:text="#" />
 
@@ -67,27 +72,24 @@
                         android:id="@+id/textView47"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="1dp"
                         android:layout_weight="4"
-                        android:background="@android:color/white"
+                        android:background="@drawable/my_border"
                         android:text="In welcher Situation habe ich mein Kind gelobt?" />
 
                     <TextView
                         android:id="@+id/textView48"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_margin="1dp"
                         android:layout_weight="4"
-                        android:background="@android:color/white"
+                        android:background="@drawable/my_border"
                         android:text="Auf welcher Art habe ich mein Kind gelobt?" />
 
                     <TextView
                         android:id="@+id/textView49"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_margin="1dp"
                         android:layout_weight="4"
-                        android:background="@android:color/white"
+                        android:background="@drawable/my_border"
                         android:text="Wie hat mein Kind reagiert?" />
                 </TableRow>
 

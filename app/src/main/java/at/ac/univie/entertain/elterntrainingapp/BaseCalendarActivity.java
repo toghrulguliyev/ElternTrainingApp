@@ -270,7 +270,7 @@ public abstract class BaseCalendarActivity extends AppCompatActivity implements 
                     membersList = new ArrayList<User>();
                     membersList = response.body();
                     if (membersList == null || membersList.isEmpty()) {
-                        System.out.println("No members found");
+                        System.out.println("Keine Familienmitglieder gefunden");
                     } else if (membersList != null && !membersList.isEmpty() && membersList.size() > 0) {
                         setAllMembers();
                         setKinder();
