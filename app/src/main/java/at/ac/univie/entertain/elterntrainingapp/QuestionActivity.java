@@ -97,7 +97,7 @@ public class QuestionActivity extends AppCompatActivity {
                 optionB.setSelected(false);
                 optionB.setSelected(false);
                 optionD.setSelected(false);
-                if (count < duel.getQuestions().size()) {
+                //if (count < duel.getQuestions().size() - 1) {
                     if (duel.getQuestions().get(count).getCorrectAnswer().equals(optionA.getText().toString())) {
                         if (type.equals("autor")) {
                             duel.getScore().plusAutorScore(1);
@@ -115,7 +115,7 @@ public class QuestionActivity extends AppCompatActivity {
                             optionD.setBackgroundColor(Color.GREEN);
                         }
                     }
-                }
+                //}
                 //count++;
                 //loadQuestion();
             }
@@ -128,7 +128,7 @@ public class QuestionActivity extends AppCompatActivity {
                 optionB.setSelected(false);
                 optionB.setSelected(false);
                 optionD.setSelected(false);
-                if (count < duel.getQuestions().size()) {
+                //if (count < duel.getQuestions().size() - 1) {
                     if (duel.getQuestions().get(count).getCorrectAnswer().equals(optionB.getText().toString())) {
                         if (type.equals("autor")) {
                             duel.getScore().plusAutorScore(1);
@@ -146,7 +146,7 @@ public class QuestionActivity extends AppCompatActivity {
                             optionD.setBackgroundColor(Color.GREEN);
                         }
                     }
-                }
+                //}
                 //count++;
                 //loadQuestion();
             }
@@ -159,7 +159,7 @@ public class QuestionActivity extends AppCompatActivity {
                 optionB.setSelected(false);
                 optionB.setSelected(false);
                 optionD.setSelected(false);
-                if (count < duel.getQuestions().size()) {
+                //if (count < duel.getQuestions().size() - 1) {
                     if (duel.getQuestions().get(count).getCorrectAnswer().equals(optionC.getText().toString())) {
                         System.out.println("C is the Correct Answer!");
                         if (type.equals("autor")) {
@@ -178,7 +178,7 @@ public class QuestionActivity extends AppCompatActivity {
                             optionD.setBackgroundColor(Color.GREEN);
                         }
                     }
-                }
+                //}
                 //count++;
                 //loadQuestion();
             }
@@ -191,7 +191,7 @@ public class QuestionActivity extends AppCompatActivity {
                 optionB.setSelected(false);
                 optionB.setSelected(false);
                 optionD.setSelected(false);
-                if (count < duel.getQuestions().size()) {
+                //if (count < duel.getQuestions().size() - 1) {
                     if (duel.getQuestions().get(count).getCorrectAnswer().equals(optionD.getText().toString())) {
                         if (type.equals("autor")) {
                             duel.getScore().plusAutorScore(1);
@@ -209,7 +209,7 @@ public class QuestionActivity extends AppCompatActivity {
                             optionB.setBackgroundColor(Color.GREEN);
                         }
                     }
-                }
+                //}
                 //count++;
                 //loadQuestion();
             }
@@ -218,6 +218,7 @@ public class QuestionActivity extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //System.out.println("count = " + count + " // duel size = " + duel.getQuestions().size());
                 if (count < duel.getQuestions().size() - 1) {
                     count++;
                     optionA.setSelected(false);
@@ -230,12 +231,13 @@ public class QuestionActivity extends AppCompatActivity {
                     optionD.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
                     if (type.equals("autor")) {
-                        System.out.println("Autor Score = " + duel.getAutorScore());
+                        //System.out.println("Autor Score = " + duel.getAutorScore());
                     } else if (type.equals("opponent")) {
-                        System.out.println("Opponent Score = " + duel.getOpponentScore());
+                        //System.out.println("Opponent Score = " + duel.getOpponentScore());
                     }
                     loadQuestion();
                 } else {
+                    System.out.println("count = " + count);
                     if (type.equals("autor")) {
                         duel.setAutorStatus(true);
                     } else if (type.equals("opponent")) {
@@ -253,9 +255,9 @@ public class QuestionActivity extends AppCompatActivity {
                             }
                         }
                     }
-
+                    countDownTimer.cancel();
                     saveScore();
-                    showResultDialog();
+                    //showResultDialog();
                 }
             }
         });
@@ -312,7 +314,7 @@ public class QuestionActivity extends AppCompatActivity {
                 }
                 setWinner();
                 saveScore();
-                showResultDialog();
+                //showResultDialog();
             }
             //Toast.makeText(getActivity(), "5 Minunten sind vorbei", Toast.LENGTH_SHORT).show();
         }
@@ -414,6 +416,8 @@ public class QuestionActivity extends AppCompatActivity {
             score = duel.getOpponentScore();
         }
 
+        showResultDialog();
+
         Call<Response> call = api.saveScore(token, username, type, duel.getId(), score);
 
         call.enqueue(new Callback<Response>() {
@@ -433,8 +437,9 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void loadQuestion() {
         System.out.println("Question Count = " + count);
+        System.out.println("Question: " + duel.getQuestions().get(count).getQuestion());
         if (duel.getQuestions() != null && !duel.getQuestions().isEmpty()) {
-            if (count < duel.getQuestions().size() - 1) {
+            if (count <= duel.getQuestions().size() - 1) {
                 question.setText(duel.getQuestions().get(count).getQuestion());
                 List<String> answers = new ArrayList<String>();
                 answers = duel.getQuestions().get(count).getShuffeledAnswers();
