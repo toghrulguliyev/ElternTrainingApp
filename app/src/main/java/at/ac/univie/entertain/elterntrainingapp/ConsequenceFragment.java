@@ -185,9 +185,8 @@ public class ConsequenceFragment extends Fragment {
                 if (response.isSuccessful()) {
                     consList = response.body();
                     if (consList == null || consList.isEmpty()) {
-                        Toast.makeText(getActivity(), "Keine Daten vorhanden", Toast.LENGTH_SHORT).show();
                         consListView.setEmptyView(consView.findViewById(R.id.consequence_listview));
-                        return;
+                        Toast.makeText(getActivity(), "Keine Daten vorhanden", Toast.LENGTH_SHORT).show();
                     } else if (!consList.isEmpty()) {
                             consAdapter = new ConsequenceAdapter(getActivity(), consList);
                             System.out.println("------------- size: " + consList.size());

@@ -6,52 +6,87 @@
     tools:context=".ExercisesListFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/pieBtn"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Emotions" />
+            android:orientation="vertical"
+            android:layout_margin="7dp">
 
-        <Button
-            android:id="@+id/selfportrait_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="SelfPortrait" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
 
-        <Button
-            android:id="@+id/goals_ex"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ziele" />
+            <TextView
+                android:id="@+id/textView72"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Übungen"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/gedanke_Btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Gedanke" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
 
-        <Button
-            android:id="@+id/loben_Btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Loben" />
+            <TextView
+                android:id="@+id/textView76"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Das ist die Liste von Übungen. Jede Übung muss mindestens 5 Minuten gemacht werden. Die Stoppuhr wird in jeder Übung angezeigt, damit Sie sich zetlich begrenzen können. Wenn die Zeit um ist, ist es auch möglich die Übung weiter fortzusetzen."
+                android:textSize="18sp" />
 
-        <Button
-            android:id="@+id/consequenceBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Konsequenzen" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
 
-        <Button
-            android:id="@+id/ansatzBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ansatz" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/pieBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:text="Emotionen Kontrollieren" />
+
+            <Button
+                android:id="@+id/selfportrait_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:text="Selbstbild des Kindes" />
+
+            <Button
+                android:id="@+id/goals_ex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:text="Ziele Kontrollieren" />
+
+            <Button
+                android:id="@+id/gedanke_Btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:text="Gedanken Analyse" />
+
+            <Button
+                android:id="@+id/loben_Btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:text="Loben des Kindes" />
+
+            <Button
+                android:id="@+id/consequenceBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Konsequenzen"
+                android:layout_marginHorizontal="30dp"/>
+
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

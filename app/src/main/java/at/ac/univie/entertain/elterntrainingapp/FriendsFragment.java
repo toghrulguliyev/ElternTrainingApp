@@ -43,6 +43,7 @@ public class FriendsFragment extends Fragment implements SwipeRefreshLayout.OnRe
     View familyView;
     private Button addMemberBtn, detachBtn, updateBtn;
     private List<User> userList;
+    private SwipeRefreshLayout swipeRefresh;
 
 
 
@@ -79,6 +80,12 @@ public class FriendsFragment extends Fragment implements SwipeRefreshLayout.OnRe
         detachBtn = (Button) familyView.findViewById(R.id.detachFamilyBtn);
         userListView = (ListView) familyView.findViewById(R.id.memberlist_view);
         updateBtn = (Button) familyView.findViewById(R.id.update_family_memberlist_btn);
+        swipeRefresh = (SwipeRefreshLayout) familyView.findViewById(R.id.swipRefreshMembers);
+        swipeRefresh.setOnRefreshListener(this);
+        swipeRefresh.setColorSchemeColors(getResources().getColor(android.R.color.holo_green_dark),
+                getResources().getColor(android.R.color.holo_red_dark),
+                getResources().getColor(android.R.color.holo_blue_dark),
+                getResources().getColor(android.R.color.holo_orange_dark));
 
         loadMemberList();
 
@@ -93,7 +100,6 @@ public class FriendsFragment extends Fragment implements SwipeRefreshLayout.OnRe
             @Override
             public void onClick(View v) {
                 toAddMemberFragment();
-                loadMemberList();
             }
         });
 
@@ -152,6 +158,7 @@ public class FriendsFragment extends Fragment implements SwipeRefreshLayout.OnRe
         call.enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, retrofit2.Response<List<User>> response) {
+                swipeRefresh.setRefreshing(false);
                 if (response.isSuccessful()) {
                     userList = response.body();
                     if (userList == null || userList.isEmpty()) {
@@ -183,8 +190,6 @@ public class FriendsFragment extends Fragment implements SwipeRefreshLayout.OnRe
                 Toast.makeText(getActivity(), "Fehler auf dem Server", Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 
     public void removeMemberDialog(String rel) {

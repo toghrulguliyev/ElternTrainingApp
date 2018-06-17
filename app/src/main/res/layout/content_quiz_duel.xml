@@ -5,9 +5,9 @@
     android:id="@+id/content_quiz_duel"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="7dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".QuizDuelActivity"
+    android:layout_margin="7dp"
     tools:showIn="@layout/activity_quiz_duel">
 
     <LinearLayout

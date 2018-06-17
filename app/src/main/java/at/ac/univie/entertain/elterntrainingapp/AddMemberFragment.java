@@ -69,6 +69,7 @@ public class AddMemberFragment extends Fragment {
         addMemberView = inflater.inflate(R.layout.fragment_add_member, container, false);
 
         //getDialog().setTitle("Familienmitglieder");
+        System.out.println("Add MEMBER GETFAMILYID = " + getFamilyId());
 
         searchListView = (ListView) addMemberView.findViewById(R.id.search_listview);
         searchMember = (SearchView) addMemberView.findViewById(R.id.search_member);
@@ -144,7 +145,14 @@ public class AddMemberFragment extends Fragment {
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                 if (response.isSuccessful()) {
                     String familyId = response.headers().get(Const.FAMILY_ID);
-                    if (familyId != null && getFamilyId() != null && !familyId.isEmpty() && !getFamilyId().isEmpty() && !familyId.equals(getFamilyId())) {
+                    System.out.println("FamilyID = " + familyId);
+                    if (getFamilyId() != null && !getFamilyId().isEmpty()) {
+                        if (familyId == null || familyId.isEmpty()) {
+                            return;
+                        } else if (familyId != null && !familyId.isEmpty()) {
+                            saveFamilyId(familyId);
+                        }
+                    } else if (getFamilyId() == null || getFamilyId().isEmpty()) {
                         saveFamilyId(familyId);
                     }
                 }
@@ -202,12 +210,12 @@ public class AddMemberFragment extends Fragment {
     }
 
     public String getFamilyId() {
-        sharedPreferences = getActivity().getSharedPreferences(Const.SAVE_FILE,MODE_PRIVATE);
+        sharedPreferences = getActivity().getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
         return sharedPreferences.getString(Const.FAMILY_ID,"");
     }
 
     public void saveFamilyId(String familyId){
-        sharedPreferences = getActivity().getSharedPreferences(Const.FAMILY_ID, MODE_PRIVATE);
+        sharedPreferences = getActivity().getSharedPreferences(Const.SAVE_FILE, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(Const.FAMILY_ID, familyId);
         editor.commit();

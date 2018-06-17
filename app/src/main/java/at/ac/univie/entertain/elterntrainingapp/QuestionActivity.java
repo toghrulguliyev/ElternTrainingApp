@@ -62,6 +62,8 @@ public class QuestionActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+        setTitle("Quiz Duell");
+
         question = (TextView) findViewById(R.id.qd_question);
         optionA = (TextView) findViewById(R.id.qd_question_a);
         optionB = (TextView) findViewById(R.id.qd_question_b);

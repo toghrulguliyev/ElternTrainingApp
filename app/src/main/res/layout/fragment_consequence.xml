@@ -64,7 +64,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/my_border"
-                        android:text=" Situation: Wie waren die  äußeren Bedingungen?" />
+                        android:gravity="center"
+                        android:text=" Situation: Wie waren die  äußeren Bedingungen?"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textView59"
@@ -72,7 +74,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/my_border"
-                        android:text=" Reaktion: Wie hat sich mein Kind verhalten?" />
+                        android:gravity="center"
+                        android:text=" Reaktion: Wie hat sich mein Kind verhalten?"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textView60"
@@ -80,7 +84,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/my_border"
-                        android:text=" Konsequenz: Welche Konsequenz habe ich folgen lassen?" />
+                        android:gravity="center"
+                        android:text=" Konsequenz: Welche Konsequenz habe ich folgen lassen?"
+                        android:textStyle="bold" />
                 </TableRow>
 
                 <TableRow
