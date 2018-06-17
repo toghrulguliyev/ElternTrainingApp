@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuestionActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="7dp">
+
+        <ProgressBar
+            android:id="@+id/qd_progressbar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <TextView
+            android:id="@+id/qd_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="TextView"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:background="@android:color/holo_orange_light"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="8"
+            android:background="@color/option_color"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/textView75"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="a:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/qd_question_a"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                android:gravity="center"
+                android:text="TextView"
+                android:textSize="18sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="15dp"
+                android:background="?android:attr/selectableItemBackground"/>
+        </TableRow>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="8"
+            android:background="@color/option_color"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/textView77"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="b:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/qd_question_b"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                android:gravity="center"
+                android:text="TextView"
+                android:textSize="18sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="15dp"
+                android:background="?android:attr/selectableItemBackground"/>
+        </TableRow>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="8"
+            android:background="@color/option_color"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/textView78"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="c:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/qd_question_c"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                android:gravity="center"
+                android:text="TextView"
+                android:textSize="18sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="15dp"
+                android:background="?android:attr/selectableItemBackground"/>
+        </TableRow>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="8"
+            android:background="@color/option_color"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/textView79"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="d:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/qd_question_d"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                android:gravity="center"
+                android:text="TextView"
+                android:textSize="18sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="15dp"
+                android:background="?android:attr/selectableItemBackground"/>
+        </TableRow>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <Button
+            android:id="@+id/qd_next_question_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/weiter" />
+
+        <Button
+            android:id="@+id/qd_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/abbrechen" />
+
+    </LinearLayout>
+</ScrollView>

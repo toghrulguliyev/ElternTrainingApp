@@ -72,7 +72,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignTop="@+id/addRuleBtn"
                 android:layout_marginEnd="41dp"
-                android:text="@string/aktualisieren" />
+                android:text="@string/aktualisieren"/>
 
         </RelativeLayout>
     </android.support.constraint.ConstraintLayout>

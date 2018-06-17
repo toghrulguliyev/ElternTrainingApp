@@ -56,7 +56,8 @@
         <activity
             android:name=".QuizDuelActivity"
             android:label="@string/title_activity_quiz_duel"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".QuestionActivity"></activity>
     </application>
 
 </manifest>

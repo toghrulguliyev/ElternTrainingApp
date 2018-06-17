@@ -161,7 +161,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="226dp"
-                android:text="@string/change_pwd" />
+                android:text="@string/change_pwd"/>
 
             <Button
                 android:id="@+id/addFriendBtn"

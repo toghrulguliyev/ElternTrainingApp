@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import at.ac.univie.entertain.elterntrainingapp.R;
@@ -36,7 +38,7 @@ public class SimilarityAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return emoList.get(0);
+        return emoList.get(position);
     }
 
     @Override
@@ -53,17 +55,31 @@ public class SimilarityAdapter extends BaseAdapter {
 
         TextView data = (TextView) view.findViewById(R.id.piechart_similarity_percentage_view);
         ProgressBar bar = (ProgressBar) view.findViewById(R.id.piechart_similaritybar);
+        bar.setMax(100);
 
+        Emotions emo = (Emotions) getItem(position);
 
+        if (emo != null) {
+            //data.setText(emo.getAutor() + ": ");
 
-        data.setText(emoList.get(position).getAutor() + ": ");
+            float memberEmotions = (emo.getEmotions()[0] + emo.getEmotions()[2] + emo.getEmotions()[4] + emo.getEmotions()[6]) / 400;
 
-        float memberEmotions = (emoList.get(position).getEmotions()[0] + emoList.get(position).getEmotions()[2] + emoList.get(position).getEmotions()[4] + emoList.get(position).getEmotions()[6])/400;
+            System.out.println("memberEmotions = " + memberEmotions * 100);
+            System.out.println("istEmotions = " + istEmotions * 100);
 
-        if (istEmotions > memberEmotions) {
-            bar.setProgress(Math.round(memberEmotions/istEmotions));
-        } else {
-            bar.setProgress(Math.round(istEmotions/memberEmotions));
+            if (istEmotions > memberEmotions) {
+                System.out.println(Math.round((((memberEmotions * 100) / (istEmotions * 100))) * 100));
+                bar.setProgress(Math.round((((memberEmotions * 100) / (istEmotions * 100))) * 100));
+                DecimalFormat df = new DecimalFormat("#.#");
+                df.setRoundingMode(RoundingMode.CEILING);
+                float sim = Math.round(((memberEmotions * 100) / (istEmotions * 100)) * 100);
+                df.format(sim);
+                data.setText(emo.getAutor() + " (" + Math.round(((memberEmotions * 100) / (istEmotions * 100)) * 100) + "%)");
+            } else {
+                System.out.println(Math.round(((istEmotions * 100) / (memberEmotions * 100)) * 100));
+                bar.setProgress(Math.round(((istEmotions * 100) / (memberEmotions * 100)) * 100));
+                data.setText(emo.getAutor() + " (" + Math.round(((istEmotions * 100) / (memberEmotions * 100)) * 100) + "%)");
+            }
         }
 
         return view;

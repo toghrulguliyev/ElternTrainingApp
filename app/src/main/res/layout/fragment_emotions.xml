@@ -98,16 +98,16 @@
                 android:text="@string/add_edit_emotions" />
 
             <Button
-                android:id="@+id/piechart_backBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/back_de" />
-
-            <Button
                 android:id="@+id/piechart_compare_dialog_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gefühle vergleichen" />
+                android:text="Gefühle vergleichen"/>
+
+            <Button
+                android:id="@+id/piechart_backBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/back_de"/>
 
 
         </LinearLayout>

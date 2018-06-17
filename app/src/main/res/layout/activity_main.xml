@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@android:color/black">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,8 +19,7 @@
             android:layout_centerHorizontal="true"
             android:onClick="goToRegister"
             android:layout_marginBottom="77dp"
-            android:text="Konto erstellen"
-            />
+            android:text="Konto erstellen" />
 
         <Button
             android:id="@+id/loginBtn"
@@ -30,5 +30,14 @@
             android:onClick="goToLogin"
             android:layout_marginBottom="174dp"
             android:text="Einloggen" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="240dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="124dp"
+            app:srcCompat="@drawable/logo" />
+
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

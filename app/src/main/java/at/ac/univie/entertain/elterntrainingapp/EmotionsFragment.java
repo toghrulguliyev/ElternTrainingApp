@@ -152,7 +152,6 @@ public class EmotionsFragment extends Fragment implements SwipeRefreshLayout.OnR
                 if (response.isSuccessful()) {
                     istEmotions = response.body();
                     System.out.println("--------------  IS SUCCESFUL  -------------");
-                    System.out.println(istEmotions.getAutor());
                     if (istEmotions == null) {
                         Toast.makeText(getActivity(), "Keine Daten vorhanden. Bitte ein neuer Zustand eingeben", Toast.LENGTH_LONG).show();
                     } else {
@@ -359,7 +358,7 @@ public class EmotionsFragment extends Fragment implements SwipeRefreshLayout.OnR
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 saveEmotions();
-                                loadMyEmoState();
+                                //loadMyEmoState();
                             }
                         }).setNegativeButton("Abbrechen",
                 new DialogInterface.OnClickListener() {
@@ -387,13 +386,13 @@ public class EmotionsFragment extends Fragment implements SwipeRefreshLayout.OnR
 
     public void openSimilarityDialog() {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
-        View dialogSim = getActivity().getLayoutInflater().inflate(R.layout.dialog_emotions_similarity, null);
-        builder.setView(dialogSim);
-        builder.setTitle("Übereinstimmung");
-
-        emoListView = (ListView) dialogSim.findViewById(R.id.emotions_list_similarity);
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//
+//        View dialogSim = getActivity().getLayoutInflater().inflate(R.layout.dialog_emotions_similarity, null);
+//        builder.setView(dialogSim);
+//        builder.setTitle("Übereinstimmung");
+//
+//        emoListView = (ListView) dialogSim.findViewById(R.id.emotions_list_similarity);
 
 
         Retrofit retrofit = RetrofitClient.getRetrofitClient();
@@ -412,9 +411,26 @@ public class EmotionsFragment extends Fragment implements SwipeRefreshLayout.OnR
                     emotionsList = response.body();
                     if (emotionsList == null || emotionsList.isEmpty()) {
                         Toast.makeText(getActivity(), "Keine Daten von Mitgliedern vorhanden", Toast.LENGTH_SHORT).show();
+                        return;
                     } else {
+                        System.out.println("Emotionslist size: " + emotionsList.size());
                         simAdapter = new SimilarityAdapter(getActivity(), emotionsList, (istData[0] + istData[2] + istData[4] + istData[6])/400);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+                        View dialogSim = getActivity().getLayoutInflater().inflate(R.layout.dialog_emotions_similarity, null);
+                        builder.setView(dialogSim);
+                        builder.setTitle("Übereinstimmung");
+
+                        emoListView = (ListView) dialogSim.findViewById(R.id.emotions_list_similarity);
                         emoListView.setAdapter(simAdapter);
+                        builder.setCancelable(false)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                });
+                        builder.show();
 
                     }
                 }
@@ -426,16 +442,38 @@ public class EmotionsFragment extends Fragment implements SwipeRefreshLayout.OnR
                 Toast.makeText(getActivity(), "Fehler auf dem Server", Toast.LENGTH_SHORT).show();
             }
         });
+//        if (emotionsList == null || emotionsList.isEmpty()) {
+//            return;
+//        } else if (emotionsList != null && !emotionsList.isEmpty()) {
+//            builder.setCancelable(false)
+//                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            dialog.cancel();
+//                        }
+//                    });
+//            builder.show();
+//        }
+    }
+
+    public void reallyOpenSimilarityDialog() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        View dialogSim = getActivity().getLayoutInflater().inflate(R.layout.dialog_emotions_similarity, null);
+        builder.setView(dialogSim);
+        builder.setTitle("Übereinstimmung");
+
+        emoListView = (ListView) dialogSim.findViewById(R.id.emotions_list_similarity);
 
         builder.setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
+                        dialog.cancel();
                     }
                 });
         builder.show();
-
 
     }
 
@@ -454,7 +492,9 @@ public class EmotionsFragment extends Fragment implements SwipeRefreshLayout.OnR
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                 if (response.isSuccessful()) {
+                    loadMyEmoState();
                     Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
                 }
             }
 

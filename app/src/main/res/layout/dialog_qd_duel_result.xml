@@ -5,23 +5,8 @@
     android:orientation="vertical">
 
     <Space
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:layout_weight="1" />
-
-    <TextView
-        android:id="@+id/textView72"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="Ergebnisse:"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
         android:layout_weight="1" />
 
     <TextView
@@ -36,21 +21,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="15dp"
-        android:layout_weight="1" />
-
-    <TextView
-        android:id="@+id/textView76"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="Quiz Duell:"
-        android:textSize="18sp" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="5dp"
         android:layout_weight="1" />
 
     <TableLayout

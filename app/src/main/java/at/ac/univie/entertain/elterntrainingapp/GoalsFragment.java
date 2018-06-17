@@ -164,7 +164,7 @@ public class GoalsFragment extends Fragment {
         public void onFinish() {
             progressBar.setProgress(299);
             progressBar.setBackgroundColor(Color.GREEN);
-            Toast.makeText(getActivity(), "5 Minunten sind vorbei", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity(), "5 Minunten sind vorbei", Toast.LENGTH_SHORT).show();
         }
 
     }

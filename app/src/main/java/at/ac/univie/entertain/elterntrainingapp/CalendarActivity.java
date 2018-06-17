@@ -297,10 +297,6 @@ public class CalendarActivity extends BaseCalendarActivity implements Callback<L
                            }
                            saveEvent(addEvent);
                            calledNetwork = false;
-                           finish();
-                           overridePendingTransition(0, 0);
-                           startActivity(getIntent());
-                           overridePendingTransition(0, 0);
                        }
 
                     }
@@ -503,10 +499,6 @@ public class CalendarActivity extends BaseCalendarActivity implements Callback<L
                         editEvent.setNotifyUser(notifyUser);
                         saveEvent(editEvent);
                         calledNetwork = false;
-                        finish();
-                        overridePendingTransition(0, 0);
-                        startActivity(getIntent());
-                        overridePendingTransition(0, 0);
                     } else {
                         Toast.makeText(CalendarActivity.this, "Ändern Sie Daten", Toast.LENGTH_SHORT).show();
                     }

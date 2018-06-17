@@ -1,10 +1,13 @@
 package at.ac.univie.entertain.elterntrainingapp.model.quizDuel;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Question {
+public class Question implements Parcelable {
 
     private String question;
     private String category;
@@ -58,4 +61,37 @@ public class Question {
     public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
     }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.question);
+        dest.writeString(this.category);
+        dest.writeStringList(this.answers);
+        dest.writeString(this.correctAnswer);
+    }
+
+    protected Question(Parcel in) {
+        this.question = in.readString();
+        this.category = in.readString();
+        this.answers = in.createStringArrayList();
+        this.correctAnswer = in.readString();
+    }
+
+    public static final Parcelable.Creator<Question> CREATOR = new Parcelable.Creator<Question>() {
+        @Override
+        public Question createFromParcel(Parcel source) {
+            return new Question(source);
+        }
+
+        @Override
+        public Question[] newArray(int size) {
+            return new Question[size];
+        }
+    };
 }

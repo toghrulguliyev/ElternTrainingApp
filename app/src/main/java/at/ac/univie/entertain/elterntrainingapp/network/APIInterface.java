@@ -172,6 +172,8 @@ public interface APIInterface {
     @POST("get_results")
     Call<Results> getScores(@Header(Const.TOKEN_KEY) String token, @Field("username") String username);
 
-
+    @FormUrlEncoded
+    @POST("remove_duel")
+    Call<Response> removeDuel(@Header(Const.TOKEN_KEY) String token, @Field("id") String id);
 
 }

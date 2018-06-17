@@ -1,6 +1,7 @@
 package at.ac.univie.entertain.elterntrainingapp;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.RectF;
@@ -182,16 +183,6 @@ public abstract class BaseCalendarActivity extends AppCompatActivity implements 
             event.setFamilyId(familyId);
         }
 
-        System.out.println("-------------------");
-        System.out.println(event.getAutor());
-        System.out.println(event.getName());
-        System.out.println(event.getMessage());
-        System.out.println(event.getStartTime());
-        System.out.println(event.getEndTime());
-        System.out.println(event.getId());
-        System.out.println(event.getColor());
-        System.out.println(event.getEventType());
-        System.out.println("---------------------");
 
         Call<Response> call = api.saveEvent(token, event);
         
@@ -199,6 +190,10 @@ public abstract class BaseCalendarActivity extends AppCompatActivity implements 
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                 if (response.isSuccessful()) {
+                    finish();
+                    overridePendingTransition(0, 0);
+                    startActivity(new Intent(getApplicationContext(), CalendarActivity.class));
+                    overridePendingTransition(0, 0);
                     Toast.makeText(BaseCalendarActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(BaseCalendarActivity.this, "Anfrage fehlgeschlagen", Toast.LENGTH_SHORT).show();

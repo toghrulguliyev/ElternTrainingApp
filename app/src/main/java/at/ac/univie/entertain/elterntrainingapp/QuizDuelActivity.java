@@ -80,7 +80,7 @@ public class QuizDuelActivity extends AppCompatActivity {
         resultsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showOverallResults();
+                loadResults();
             }
         });
 
@@ -92,8 +92,6 @@ public class QuizDuelActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 
     public void showOverallResults() {
@@ -109,11 +107,13 @@ public class QuizDuelActivity extends AppCompatActivity {
         TextView rightPercentage = (TextView) dialogResults.findViewById(R.id.qd_right_answers_percent);
         TextView falsePercentage = (TextView) dialogResults.findViewById(R.id.qd_wrong_answers_percent);
 
+        System.out.println("Results = " + String.valueOf(results.getAnsweredWrong()));
+
         if (results != null) {
-            playedDuels.setText(results.getPlayedDuels());
-            answeredQuestions.setText(results.getAnsweredQuestions());
-            rightAnswers.setText(results.getRightAnswered());
-            falseAnswers.setText(results.getWrongAnswered());
+            playedDuels.setText(String.valueOf(results.getPlayedDuels()));
+            answeredQuestions.setText(String.valueOf(results.getAnsweredQuestions()));
+            rightAnswers.setText(String.valueOf(results.getRightAnswered()));
+            falseAnswers.setText(String.valueOf(results.getWrongAnswered()));
             rightPercentage.setText(String.valueOf(results.getAnsweredRight()) + " %");
             falsePercentage.setText(String.valueOf(results.getAnsweredWrong()) + " %");
         } else {
@@ -246,6 +246,7 @@ public class QuizDuelActivity extends AppCompatActivity {
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(QuizDuelActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    loadDuelList();
                 }
             }
 
@@ -286,17 +287,34 @@ public class QuizDuelActivity extends AppCompatActivity {
                     if (duelList == null || duelList.isEmpty()) {
                         Toast.makeText(QuizDuelActivity.this, "Keine Duelle gefunden", Toast.LENGTH_SHORT).show();
                     } else if (duelList != null && !duelList.isEmpty()) {
-                        System.out.println("duel: " + duelList.get(0).getScore().getOpponent());
                         duelAdapter = new DuelAdapter(QuizDuelActivity.this, duelList);
+                        System.out.println("duelAdapter Class: " + duelAdapter.getCount());
                         duelListView.setAdapter(duelAdapter);
+                        System.out.println("duelListView Count: " + duelListView.toString());
                         duelListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                if (duelList.get(position).isAutorStatus()) {
-                                    showResultDialog(position);
-                                } else if (!duelList.get(position).isAutorStatus()) {
-                                    startGame(position);
+                                if (duelList.get(position).getAutor().equals(getUsername())) {
+                                    if (duelList.get(position).isAutorStatus()) {
+                                        showResultDialog(position);
+                                    } else if (!duelList.get(position).isAutorStatus()) {
+                                        startGame(position);
+                                    }
+                                } else if (duelList.get(position).getOpponent().equals(getUsername())) {
+                                    if (duelList.get(position).isOpponentStatus()) {
+                                        showResultDialog(position);
+                                    } else if (!duelList.get(position).isOpponentStatus()) {
+                                        startGame(position);
+                                    }
                                 }
+
+                            }
+                        });
+                        duelListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                            @Override
+                            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                                removeDueldialog(duelList.get(position).getId());
+                                return true;
                             }
                         });
                     }
@@ -308,7 +326,56 @@ public class QuizDuelActivity extends AppCompatActivity {
                 Toast.makeText(QuizDuelActivity.this, "Keine Internet Verbindung", Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
+    public void removeDueldialog(String id) {
+
+        final String mId = id;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Wirklich löschen?");
+
+        builder.setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        removeDuel(mId);
+
+                    }
+                }).setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.show();
+
+    }
+
+    public void removeDuel(String id) {
+
+        Retrofit retrofit = RetrofitClient.getRetrofitClient();
+        APIInterface api = retrofit.create(APIInterface.class);
+
+        String token = getToken();
+
+        Call<Response> call = api.removeDuel(token, id);
+
+        call.enqueue(new Callback<Response>() {
+            @Override
+            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(QuizDuelActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    loadDuelList();
+                } else {
+                    Toast.makeText(QuizDuelActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Response> call, Throwable t) {
+                Toast.makeText(QuizDuelActivity.this, "Internetverbindung fehlgeschlagen", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -326,14 +393,14 @@ public class QuizDuelActivity extends AppCompatActivity {
 
         if (!duelList.get(position).isOpponentStatus()) {
             winner.setText("Der Gegner hat noch nicht gespielt");
-            winner.setTextColor(Color.RED);
+            winner.setTextColor(Color.MAGENTA);
         } else {
             if (duelList.get(position).getWinner() != null && !duelList.get(position).getWinner().isEmpty()) {
                 winner.setText(duelList.get(position).getWinner());
                 winner.setTextColor(Color.GREEN);
             } else if (duelList.get(position).getWinner() == null || duelList.get(position).getWinner().isEmpty()) {
                 winner.setText("Der Gegner hat noch nicht gespielt");
-                winner.setTextColor(Color.RED);
+                winner.setTextColor(Color.MAGENTA);
             }
         }
 
@@ -342,12 +409,12 @@ public class QuizDuelActivity extends AppCompatActivity {
         if (!duelList.get(position).isOpponentStatus()) {
             oppo_score.setText("Warten auf Punkte");
         } else if (duelList.get(position).isOpponentStatus()) {
-            oppo_score.setText(duelList.get(position).getOpponentScore());
+            oppo_score.setText(String.valueOf(duelList.get(position).getOpponentScore()) + "/10");
         }
         if (!duelList.get(position).isAutorStatus()) {
-            oppo_score.setText("Warten auf Punkte");
+            autor_score.setText("Warten auf Punkte");
         } else if (duelList.get(position).isAutorStatus()) {
-            oppo_score.setText(duelList.get(position).getAutorScore());
+            autor_score.setText(String.valueOf(duelList.get(position).getAutorScore()) + "/10");
         }
 
         builder.setCancelable(false)
@@ -381,19 +448,20 @@ public class QuizDuelActivity extends AppCompatActivity {
         if (!duelList.get(position).isOpponentStatus()) {
             oppo_score.setText("Warten auf Punkte");
         } else if (duelList.get(position).isOpponentStatus()) {
-            oppo_score.setText(duelList.get(position).getOpponentScore());
+            oppo_score.setText(String.valueOf(duelList.get(position).getOpponentScore()));
         }
         if (!duelList.get(position).isAutorStatus()) {
-            oppo_score.setText("Warten auf Punkte");
+            autor_score.setText("Warten auf Punkte");
         } else if (duelList.get(position).isAutorStatus()) {
-            oppo_score.setText(duelList.get(position).getAutorScore());
+            autor_score.setText(String.valueOf(duelList.get(position).getAutorScore()));
         }
 
         builder.setCancelable(false)
                 .setPositiveButton("Start", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        openGameFragment(duelList.get(pos));
+                        //openGameFragment(duelList.get(pos));
+                        openGame(duelList.get(pos));
                     }
                 }).setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
             @Override
@@ -415,6 +483,22 @@ public class QuizDuelActivity extends AppCompatActivity {
         FragmentManager manager = getFragmentManager();
         manager.beginTransaction()
                 .replace(R.id.content_quiz_duel, gameFragment).addToBackStack(null).commit();
+    }
+
+    public void openGame(Duel duel) {
+        Intent intent = new Intent(this, QuestionActivity.class);
+        Bundle args = new Bundle();
+        if (duel != null) {
+            args.putParcelable(ARG_DUEL, duel);
+            intent.putExtras(args);
+            startActivity(intent);
+        } else {
+            new AlertDialog.Builder(this)
+                    .setTitle("Achtung")
+                    .setMessage("Duel nicht gefunden! Probieren Sie es später nochmal.")
+                    .setPositiveButton(android.R.string.ok, null)
+                    .show();
+        }
     }
 
     public void loadMemberList() {
