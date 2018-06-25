@@ -93,7 +93,7 @@ public class ConsequenceFragment extends Fragment {
 
         progressBar.setMax(299);
         progressBar.setProgress(299);
-        MyCountDownTimer countDownTimer = new MyCountDownTimer(5*60000, 1000);
+        final MyCountDownTimer countDownTimer = new MyCountDownTimer(5*60000, 1000);
         countDownTimer.start();
 
         loadConsList();
@@ -140,7 +140,9 @@ public class ConsequenceFragment extends Fragment {
         goBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                countDownTimer.cancel();
+                getFragmentManager().beginTransaction().remove(ConsequenceFragment.this).commitAllowingStateLoss();
+                getFragmentManager().popBackStack();
             }
         });
 

@@ -124,13 +124,15 @@ public class LobenFragment extends Fragment {
 
         progressBar.setMax(299);
         progressBar.setProgress(299);
-        MyCountDownTimer countDownTimer = new MyCountDownTimer(5*60000, 1000);
+        final MyCountDownTimer countDownTimer = new MyCountDownTimer(5*60000, 1000);
         countDownTimer.start();
 
         goBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                countDownTimer.cancel();
+                getFragmentManager().beginTransaction().remove(LobenFragment.this).commitAllowingStateLoss();
+                getFragmentManager().popBackStack();
             }
         });
 

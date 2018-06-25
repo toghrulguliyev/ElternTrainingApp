@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.io.File;
@@ -27,6 +28,7 @@ public class PdfResultsActivity extends AppCompatActivity {
     private List<File> pdfFiles = new ArrayList<File>();
     private PdfFilesAdapter pdfAdapter;
     private ListView pdfListView;
+    private Button backBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +36,20 @@ public class PdfResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pdf_results);
 
         pdfListView = (ListView) findViewById(R.id.pdf_listview);
+        backBtn = (Button) findViewById(R.id.pdf_back);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                PdfResultsActivity.super.onBackPressed();
+            }
+        });
 
         if (isStoragePermissionGranted()) {
             getFilesList();
-
         }
+
         System.out.println("PDF FILE");
         pdfListView.setAdapter(pdfAdapter);
         pdfListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

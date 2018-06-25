@@ -208,6 +208,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         } else {
             int bday = convertBDayToInt(birthday.getText().toString());
             User user = new User(firstName.getText().toString(), lastName.getText().toString(), username.getText().toString(), email.getText().toString(), password.getText().toString(), bday, genderToSave, this.accType);
+            System.out.println("USER LAST NAME : " + user.getLastName());
             progressBar.setVisibility(View.VISIBLE);
             registerProcess(user);
         }

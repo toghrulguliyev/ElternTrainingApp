@@ -41,13 +41,10 @@ public class FriendsFragment extends Fragment implements SwipeRefreshLayout.OnRe
     private MemberAdapter userAdapter;
     private SharedPreferences sharedPreferences;
     View familyView;
-    private Button addMemberBtn, detachBtn, updateBtn;
+    private Button addMemberBtn, detachBtn, updateBtn, backBtn;
     private List<User> userList;
     private SwipeRefreshLayout swipeRefresh;
 
-
-
-    //private OnFragmentInteractionListener mListener;
 
     public FriendsFragment() {
         // Required empty public constructor
@@ -81,11 +78,13 @@ public class FriendsFragment extends Fragment implements SwipeRefreshLayout.OnRe
         userListView = (ListView) familyView.findViewById(R.id.memberlist_view);
         updateBtn = (Button) familyView.findViewById(R.id.update_family_memberlist_btn);
         swipeRefresh = (SwipeRefreshLayout) familyView.findViewById(R.id.swipRefreshMembers);
+        backBtn = (Button) familyView.findViewById(R.id.family_go_back_btn);
+
         swipeRefresh.setOnRefreshListener(this);
-        swipeRefresh.setColorSchemeColors(getResources().getColor(android.R.color.holo_green_dark),
-                getResources().getColor(android.R.color.holo_red_dark),
-                getResources().getColor(android.R.color.holo_blue_dark),
-                getResources().getColor(android.R.color.holo_orange_dark));
+//        swipeRefresh.setColorSchemeColors(getResources().getColor(android.R.color.holo_green_dark),
+//                getResources().getColor(android.R.color.holo_red_dark),
+//                getResources().getColor(android.R.color.holo_blue_dark),
+//                getResources().getColor(android.R.color.holo_orange_dark));
 
         loadMemberList();
 
@@ -107,6 +106,14 @@ public class FriendsFragment extends Fragment implements SwipeRefreshLayout.OnRe
             @Override
             public void onClick(View v) {
                 loadMemberList();
+            }
+        });
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().remove(FriendsFragment.this).commitAllowingStateLoss();
+                getFragmentManager().popBackStack();
             }
         });
 
@@ -158,7 +165,9 @@ public class FriendsFragment extends Fragment implements SwipeRefreshLayout.OnRe
         call.enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, retrofit2.Response<List<User>> response) {
-                swipeRefresh.setRefreshing(false);
+                if (swipeRefresh.isRefreshing()) {
+                    swipeRefresh.setRefreshing(false);
+                }
                 if (response.isSuccessful()) {
                     userList = response.body();
                     if (userList == null || userList.isEmpty()) {

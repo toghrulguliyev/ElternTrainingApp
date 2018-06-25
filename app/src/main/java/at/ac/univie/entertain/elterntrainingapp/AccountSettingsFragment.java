@@ -44,14 +44,14 @@ public class AccountSettingsFragment extends Fragment {
 
     }
 
-    public void onResume(){
-        super.onResume();
-
-        // Set title bar
-        ((HomeActivity) getActivity())
-                .setActionBarTitle("Konto Einstellungen");
-
-    }
+//    public void onResume(){
+//        super.onResume();
+//
+//        // Set title bar
+//        ((HomeActivity) getActivity())
+//                .setActionBarTitle("Konto Einstellungen");
+//
+//    }
 
 
     @Override

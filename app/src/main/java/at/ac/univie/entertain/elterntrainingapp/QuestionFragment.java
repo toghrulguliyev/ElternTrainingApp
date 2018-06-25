@@ -44,8 +44,6 @@ public class QuestionFragment extends Fragment {
     private SharedPreferences sharedPreferences;
     private String type;
 
-    //TODO COUNTDOWN PROGRESS BAR!!!!!!
-
     public QuestionFragment() {
         // Required empty public constructor
     }
@@ -206,7 +204,15 @@ public class QuestionFragment extends Fragment {
             }
         });
 
-
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().remove(QuestionFragment.this).commitAllowingStateLoss();
+                getActivity().finish();
+                Intent intent = new Intent(getActivity(), QuizDuelActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return questionView;
     }

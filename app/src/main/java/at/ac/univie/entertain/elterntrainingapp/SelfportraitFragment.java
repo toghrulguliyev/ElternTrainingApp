@@ -5,9 +5,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.CountDownTimer;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
@@ -20,6 +22,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -61,6 +64,8 @@ public class SelfportraitFragment extends Fragment implements SwipeRefreshLayout
     private Switch qualityType;
     private boolean staerke;
     private int check = 0;
+    private ProgressBar progressBar;
+    MyCountDownTimer countDownTimer;
 
     private int position;
 
@@ -96,6 +101,16 @@ public class SelfportraitFragment extends Fragment implements SwipeRefreshLayout
         addQualityBtn = (Button) sfView.findViewById(R.id.addQualityBtn);
         goBackBtn = (Button) sfView.findViewById(R.id.selfportrait_backBtn);
         saveToPdf = (Button) sfView.findViewById(R.id.selfportrait_saveToPdfBtn);
+        swipeLayout = (SwipeRefreshLayout) sfView.findViewById(R.id.swipe_selfportrait);
+        progressBar = (ProgressBar) sfView.findViewById(R.id.progressBar_selfportrait);
+
+        swipeLayout.setOnRefreshListener(this);
+
+        progressBar.setMax(299);
+        progressBar.setProgress(299);
+        countDownTimer = new MyCountDownTimer(5*60000, 1000);
+        countDownTimer.start();
+
         loadQualitiesLists();
 
         addQualityBtn.setOnClickListener(new View.OnClickListener() {
@@ -131,7 +146,37 @@ public class SelfportraitFragment extends Fragment implements SwipeRefreshLayout
 
         });
 
+        goBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                countDownTimer.cancel();
+                getFragmentManager().beginTransaction().remove(SelfportraitFragment.this).commitAllowingStateLoss();
+                getFragmentManager().popBackStack();
+            }
+        });
+
         return sfView;
+    }
+
+    public class MyCountDownTimer extends CountDownTimer {
+
+        public MyCountDownTimer(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            int progress = (int) (5*60000 - millisUntilFinished) / 1000;
+            progressBar.setProgress(progress);
+            System.out.println("progress = " + progress);
+        }
+
+        @Override
+        public void onFinish() {
+            progressBar.setProgress(299);
+            progressBar.setBackgroundColor(Color.GREEN);
+            //Toast.makeText(getActivity(), "5 Minunten sind vorbei", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void addNewQuality() {
@@ -218,8 +263,6 @@ public class SelfportraitFragment extends Fragment implements SwipeRefreshLayout
         });
         builder.show();
     }
-
-
 
     public void loadQualitiesLists() {
 
@@ -491,6 +534,9 @@ public class SelfportraitFragment extends Fragment implements SwipeRefreshLayout
     @Override
     public void onRefresh() {
         loadQualitiesLists();
+        if (swipeLayout.isRefreshing()) {
+            swipeLayout.setRefreshing(false);
+        }
     }
 
     @Override

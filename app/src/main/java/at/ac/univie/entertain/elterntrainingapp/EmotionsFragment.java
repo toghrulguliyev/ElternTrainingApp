@@ -53,7 +53,7 @@ public class EmotionsFragment extends Fragment implements SwipeRefreshLayout.OnR
     private float[] emotionSoll = {20.0f, 80.0f, 10.0f, 90.0f, 30.0f, 70.0f, 5.0f, 95.0f}; //{0.05f, 0.2f, 0.025f, 0.225f, 0.075f, 0.175f, 0.0125f, 0.2375f};
     private ArrayList<PieEntry> istValues, sollValues;
     private Emotions istEmotions;
-    private Button addEditEmotions, updateEmotionsBtn, compareBtn;
+    private Button addEditEmotions, updateEmotionsBtn, compareBtn, backBtn;
     private SeekBar seek1, seek2, seek3, seek4;
     private float[] istData = {50.0f, 50.0f, 50.0f, 50.0f, 50.0f, 50.0f, 50.0f, 50.0f};
     private float sollPercentage;
@@ -62,7 +62,6 @@ public class EmotionsFragment extends Fragment implements SwipeRefreshLayout.OnR
     private SimilarityAdapter simAdapter;
     private ListView emoListView;
 
-    //TODO Test Similarity, add IST SOLL Similarity
 
     public EmotionsFragment() {
         // Required empty public constructor
@@ -92,6 +91,7 @@ public class EmotionsFragment extends Fragment implements SwipeRefreshLayout.OnR
         // Inflate the layout for this fragment
         emoView = inflater.inflate(R.layout.fragment_emotions, container, false);
 
+        backBtn = (Button) emoView.findViewById(R.id.piechart_backBtn);
         swipeRefresh = emoView.findViewById(R.id.swipeRefreshEmotions);
         swipeRefresh.setOnRefreshListener(this);
         swipeRefresh.setColorSchemeColors(getResources().getColor(android.R.color.holo_green_dark),
@@ -132,6 +132,14 @@ public class EmotionsFragment extends Fragment implements SwipeRefreshLayout.OnR
 
         setupSollChart();
         loadMyEmoState();
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().remove(EmotionsFragment.this).commitAllowingStateLoss();
+                getFragmentManager().popBackStack();
+            }
+        });
 
 
         return emoView;
@@ -476,7 +484,6 @@ public class EmotionsFragment extends Fragment implements SwipeRefreshLayout.OnR
         builder.show();
 
     }
-
 
     public void saveEmotions() {
 

@@ -51,7 +51,7 @@
 
             <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="336dp">
+                android:layout_height="310dp">
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -64,7 +64,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/my_border"
+                        android:background="@drawable/my_border_header"
                         android:gravity="center"
                         android:text="#" />
 
@@ -73,24 +73,30 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
-                        android:background="@drawable/my_border"
-                        android:text="In welcher Situation habe ich mein Kind gelobt?" />
+                        android:background="@drawable/my_border_header"
+                        android:gravity="center"
+                        android:text="In welcher Situation habe ich mein Kind gelobt?"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textView48"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="4"
-                        android:background="@drawable/my_border"
-                        android:text="Auf welcher Art habe ich mein Kind gelobt?" />
+                        android:background="@drawable/my_border_header"
+                        android:gravity="center"
+                        android:text="Auf welcher Art habe ich mein Kind gelobt?"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textView49"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="4"
-                        android:background="@drawable/my_border"
-                        android:text="Wie hat mein Kind reagiert?" />
+                        android:background="@drawable/my_border_header"
+                        android:gravity="center"
+                        android:text="Wie hat mein Kind reagiert?"
+                        android:textStyle="bold" />
                 </TableRow>
 
                 <TableRow

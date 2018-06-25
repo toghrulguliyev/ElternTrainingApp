@@ -63,7 +63,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/my_border"
+                        android:background="@drawable/my_border_header"
                         android:gravity="center"
                         android:text=" Situation: Wie waren die  äußeren Bedingungen?"
                         android:textStyle="bold" />
@@ -73,7 +73,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/my_border"
+                        android:background="@drawable/my_border_header"
                         android:gravity="center"
                         android:text=" Reaktion: Wie hat sich mein Kind verhalten?"
                         android:textStyle="bold" />
@@ -83,7 +83,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/my_border"
+                        android:background="@drawable/my_border_header"
                         android:gravity="center"
                         android:text=" Konsequenz: Welche Konsequenz habe ich folgen lassen?"
                         android:textStyle="bold" />

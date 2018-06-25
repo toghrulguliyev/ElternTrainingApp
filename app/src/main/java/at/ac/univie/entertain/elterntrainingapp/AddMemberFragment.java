@@ -97,7 +97,9 @@ public class AddMemberFragment extends Fragment {
         abbrechenBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toFriendsFragment();
+                getFragmentManager().beginTransaction().remove(AddMemberFragment.this).commitAllowingStateLoss();
+                //toFriendsFragment();
+                getFragmentManager().popBackStack();
             }
         });
 
@@ -119,6 +121,8 @@ public class AddMemberFragment extends Fragment {
                 searchMember.setQuery(usernames.get(position), false);
             }
         });
+
+
 
         return addMemberView;
     }
@@ -197,7 +201,6 @@ public class AddMemberFragment extends Fragment {
             }
         });
     }
-
 
     public String getToken() {
         sharedPreferences = getActivity().getSharedPreferences(Const.SAVE_FILE,MODE_PRIVATE);

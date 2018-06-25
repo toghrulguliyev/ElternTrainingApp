@@ -88,9 +88,11 @@ public class QuizDuelActivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
                 finish();
+                QuizDuelActivity.super.onBackPressed();
+//                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+//                startActivity(intent);
+//                finish();
             }
         });
     }
